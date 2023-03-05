@@ -47,14 +47,11 @@ public class HomeworkVlado {
     public void loginUser(String username, String password) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
+        System.out.println("1. Navigate to Login button");
         WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("nav-link-login")));
-        clickElementByElement(loginButton, 5);
-
-//        System.out.println("1. Navigate to Login button");
-//        WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("nav-link-login")));
 
         System.out.println("2. Click on the Login button");
-        clickElementByLocator(By.id("nav-link-login"), 5);
+        clickElementByElement(loginButton, 5);
 
         System.out.println("3. Validate the URL has be changed to the Login page's URL");
         wait.until(ExpectedConditions.urlToBe(loginPage));
@@ -76,8 +73,7 @@ public class HomeworkVlado {
 
         System.out.println("8. Navigate and click on the Profile button");
         clickElementByLocator(By.id("nav-link-profile"), 5);
-
-
+        
     }
 
     @Test(dependsOnMethods = "loginUser")
